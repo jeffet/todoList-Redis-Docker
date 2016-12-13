@@ -1,0 +1,15 @@
+web:
+  build: .
+  ports:
+   - "8000:8000"
+  links:
+   - redis
+   - mysql
+redis:
+  image: redis
+mysql:
+    build: ./dbDockerFiles
+    volumes:
+     - ./database:/var/lib/mysql
+    expose:
+     - "3306"
